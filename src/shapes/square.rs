@@ -1,13 +1,15 @@
 #[derive(Default, Clone, PartialEq, Debug)]
 pub struct Square {
+    base: super::ShapeData,
     top_left_x: f32,
     top_left_y: f32,
     side_length: f32,
 }
 
 impl Square {
-    pub fn new(top_left: (f32, f32), side_length: f32) -> Self {
+    pub fn new(label: String, top_left: (f32, f32), side_length: f32) -> Self {
         let mut square = Self {
+            base: super::ShapeData::new(label),
             top_left_x: top_left.0,
             top_left_y: top_left.1,
             side_length,
@@ -61,5 +63,13 @@ impl super::Shape for Square {
             self.top_left_x + self.side_length / 2.0,
             self.top_left_y + self.side_length / 2.0,
         )
+    }
+}
+
+impl std::ops::Deref for Square {
+    type Target = super::ShapeData;
+
+    fn deref(&self) -> &Self::Target {
+        &self.base
     }
 }

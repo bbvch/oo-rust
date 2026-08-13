@@ -1,13 +1,17 @@
+use std::ops::Deref;
+
 #[derive(Default, Clone, PartialEq, Debug)]
 pub struct Circle {
+    base: super::ShapeData,
     center_x: f32,
     center_y: f32,
     radius: f32,
 }
 
 impl Circle {
-    pub fn new(center: (f32, f32), radius: f32) -> Self {
+    pub fn new(label: String, center: (f32, f32), radius: f32) -> Self {
         let mut circle = Self {
+            base: super::ShapeData::new(label),
             center_x: center.0,
             center_y: center.1,
             radius,
@@ -51,5 +55,13 @@ impl super::Shape for Circle {
 
     fn center(&self) -> (f32, f32) {
         self.get_center()
+    }
+}
+
+impl std::ops::Deref for Circle {
+    type Target = super::ShapeData;
+
+    fn deref(&self) -> &Self::Target {
+        &self.base
     }
 }

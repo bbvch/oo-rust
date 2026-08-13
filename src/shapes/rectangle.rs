@@ -1,5 +1,6 @@
 #[derive(Default, Clone, PartialEq, Debug)]
 pub struct Rectangle {
+    base: super::ShapeData,
     top_left_x: f32,
     top_left_y: f32,
     width: f32,
@@ -7,8 +8,9 @@ pub struct Rectangle {
 }
 
 impl Rectangle {
-    pub fn new(top_left: (f32, f32), width: f32, height: f32) -> Self {
+    pub fn new(label: String, top_left: (f32, f32), width: f32, height: f32) -> Self {
         let mut rectangle = Self {
+            base: super::ShapeData::new(label),
             top_left_x: top_left.0,
             top_left_y: top_left.1,
             width,
@@ -76,5 +78,13 @@ impl super::Shape for Rectangle {
             self.top_left_x + self.width / 2.0,
             self.top_left_y + self.height / 2.0,
         )
+    }
+}
+
+impl std::ops::Deref for Rectangle {
+    type Target = super::ShapeData;
+
+    fn deref(&self) -> &Self::Target {
+        &self.base
     }
 }
