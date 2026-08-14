@@ -4,7 +4,7 @@ pub mod square;
 
 pub trait Shape: std::ops::Deref<Target = ShapeData> {
     fn label(&self) -> &str {
-        self.deref().get_label()
+        self.get_label()
     }
     fn area(&self) -> f32;
     fn perimeter(&self) -> f32;
