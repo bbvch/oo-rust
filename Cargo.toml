@@ -1,0 +1,8 @@
+[package]
+name = "oo-rust-patterns"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ambassador = "0.5.1"
+delegate = "0.13.5"

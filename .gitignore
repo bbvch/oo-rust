@@ -1,0 +1,4 @@
+/target
+
+# Cargo.lock is intentionally committed: this is a binary crate, and the demos
+# should build with the exact dependency versions they were verified against.
